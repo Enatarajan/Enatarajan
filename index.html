@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EPULZ'25 - National Level Technical Symposium</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#00f0ff',secondary:'#ff00e6'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+html {
+scroll-behavior: smooth;
+scroll-snap-type: y mandatory;
+}
+section {
+scroll-snap-align: start;
+scroll-snap-stop: always;
+}
+body {
+background-color: #0a0a0a;
+color: #fff;
+font-family: 'Inter', sans-serif;
+}
+.orbitron {
+font-family: 'Orbitron', sans-serif;
+}
+.glow-text {
+text-shadow: 0 0 10px rgba(0, 240, 255, 0.7),
+0 0 20px rgba(0, 240, 255, 0.5),
+0 0 30px rgba(0, 240, 255, 0.3);
+}
+.glow-text-purple {
+text-shadow: 0 0 10px rgba(255, 0, 230, 0.7),
+0 0 20px rgba(255, 0, 230, 0.5),
+0 0 30px rgba(255, 0, 230, 0.3);
+}
+.glow-border {
+box-shadow: 0 0 5px rgba(0, 240, 255, 0.7),
+0 0 10px rgba(0, 240, 255, 0.5),
+inset 0 0 5px rgba(0, 240, 255, 0.2);
+}
+.glow-border-purple {
+box-shadow: 0 0 5px rgba(255, 0, 230, 0.7),
+0 0 10px rgba(255, 0, 230, 0.5),
+inset 0 0 5px rgba(255, 0, 230, 0.2);
+}
+.event-card {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.event-card:hover {
+transform: translateY(-5px) scale(1.02);
+}
+.scroll-indicator {
+animation: bounce 2s infinite;
+}
+@keyframes bounce {
+0%, 20%, 50%, 80%, 100% {
+transform: translateY(0);
+}
+40% {
+transform: translateY(-20px);
+}
+60% {
+transform: translateY(-10px);
+}
+}
+.nav-dot {
+transition: all 0.3s ease;
+}
+.nav-dot.active {
+background-color: #00f0ff;
+box-shadow: 0 0 10px #00f0ff;
+}
+input, textarea {
+background-color: rgba(255, 255, 255, 0.05);
+border: 1px solid rgba(0, 240, 255, 0.3);
+color: white;
+}
+input:focus, textarea:focus {
+outline: none;
+border-color: #00f0ff;
+box-shadow: 0 0 0 2px rgba(0, 240, 255, 0.2);
+}
+.video-overlay {
+background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.5));
+}
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-3px, 3px); }
+  40% { transform: translate(-3px, -3px); }
+  60% { transform: translate(3px, 3px); }
+  80% { transform: translate(3px, -3px); }
+  100% { transform: translate(0); }
+}
+.glitch-effect {
+  animation: glitch 5s infinite alternate;
+  position: relative;
+}
+</style>
+</head>
+<body>
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 w-full z-50 bg-black bg-opacity-50 backdrop-blur-md">
+<div class="container mx-auto px-6 py-3 flex justify-between items-center">
+<div class="orbitron text-primary text-xl font-bold glow-text">EPULZ'25</div>
+<div class="hidden md:flex space-x-8">
+<a href="#hero" class="text-white hover:text-primary transition-colors">Home</a>
+<a href="#about" class="text-white hover:text-primary transition-colors">About</a>
+<a href="#tech-events" class="text-white hover:text-primary transition-colors">Technical Events</a>
+<a href="#non-tech-events" class="text-white hover:text-primary transition-colors">Non-Technical Events</a>
+<a href="#schedule" class="text-white hover:text-primary transition-colors">Schedule</a>
+<a href="#contact" class="text-white hover:text-primary transition-colors">Contact</a>
+</div>
+<button class="md:hidden w-10 h-10 flex items-center justify-center text-white">
+<i class="ri-menu-line ri-2x"></i>
+</button>
+</div>
+</nav>
+<!-- Side Navigation Dots -->
+<div class="fixed right-6 top-1/2 transform -translate-y-1/2 z-40 hidden md:block">
+<div class="flex flex-col space-y-4">
+<a href="#hero" class="nav-dot w-3 h-3 rounded-full border border-primary glow-border"></a>
+<a href="#about" class="nav-dot w-3 h-3 rounded-full border border-primary glow-border"></a>
+<a href="#tech-events" class="nav-dot w-3 h-3 rounded-full border border-primary glow-border"></a>
+<a href="#non-tech-events" class="nav-dot w-3 h-3 rounded-full border border-primary glow-border-purple"></a>
+<a href="#schedule" class="nav-dot w-3 h-3 rounded-full border border-primary glow-border"></a>
+<a href="#contact" class="nav-dot w-3 h-3 rounded-full border border-primary glow-border"></a>
+</div>
+</div>
+<!-- Hero Section -->
+<section id="hero" class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div style="background-image: url('https://public.readdy.ai/ai/img_res/eb9cf2b5aaaa7a9a477616c92689e9ff.jpg');" class="absolute inset-0 bg-cover bg-center"></div>
+<div class="absolute inset-0 video-overlay"></div>
+</div>
+<div class="container mx-auto px-6 z-10 text-center">
+<h1 class="orbitron text-5xl md:text-7xl font-bold mb-4 glow-text glitch-effect">EPULZ'25</h1>
+<p class="text-xl md:text-2xl mb-8 text-white glow-text">A National Level Symposium by Dept. of ECE</p>
+<p class="text-lg mb-9 orbitron font-bold text-white glow-text" style="margin-top: -3px">Thanthai Periyar Government Institute of Technology-Vellore</p>
+<div class="flex justify-center space-x-6 mb-12">
+<div class="text-center">
+<div id="days" class="orbitron text-3xl md:text-4xl font-bold glow-text">00</div>
+<div class="text-sm uppercase">Days</div>
+</div>
+<div class="text-center">
+<div id="hours" class="orbitron text-3xl md:text-4xl font-bold glow-text">00</div>
+<div class="text-sm uppercase">Hours</div>
+</div>
+<div class="text-center">
+<div id="minutes" class="orbitron text-3xl md:text-4xl font-bold glow-text">00</div>
+<div class="text-sm uppercase">Minutes</div>
+</div>
+<div class="text-center">
+<div id="seconds" class="orbitron text-3xl md:text-4xl font-bold glow-text">00</div>
+<div class="text-sm uppercase">Seconds</div>
+</div>
+</div>
+<a href="https://qrco.de/bfrdqv" target="_blank" class="inline-block px-8 py-4 bg-transparent border-2 border-primary text-primary orbitron font-bold rounded-button hover:bg-primary hover:text-black transition-all duration-300 glow-border">
+REGISTER NOW
+</a>
+</div>
+<div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 scroll-indicator">
+<div class="w-8 h-8 flex items-center justify-center text-primary">
+<i class="ri-arrow-down-line ri-2x"></i>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section id="about" class="min-h-screen w-full flex items-center py-20">
+<div class="container mx-auto px-6">
+<div class="max-w-4xl mx-auto text-center">
+<h2 class="orbitron text-4xl md:text-5xl font-bold mb-12 glow-text">ABOUT EPULZ'25</h2>
+<div class="bg-black bg-opacity-50 backdrop-blur-md p-8 rounded-lg border border-primary/30 glow-border">
+<p class="text-lg mb-6">
+EPULZ'25 is a prestigious national-level technical symposium organized by the Department of Electronics and Communication Engineering at Thanthai Periyar Government Institute of Technology-Vellore.
+</p>
+<p class="text-lg mb-6">
+This symposium aims to bring together brilliant minds from across India to showcase their technical prowess, innovative thinking, and problem-solving abilities through a series of challenging and engaging events.
+</p>
+<p class="text-lg">
+With a focus on promoting creativity, technical innovation, and collaborative learning, EPULZ'25 provides a platform for students to network with industry professionals, academics, and peers while competing in cutting-edge technical and non-technical events.
+</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Events Section -->
+<section id="tech-events" class="min-h-screen w-full flex items-center py-20">
+<div class="container mx-auto px-6">
+<h2 class="orbitron text-4xl md:text-5xl font-bold mb-12 text-center glow-text">TECHNICAL EVENTS</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Event 1 -->
+<div class="event-card bg-black bg-opacity-50 backdrop-blur-md rounded-lg overflow-hidden border border-primary/30 h-96">
+<div class="p-6 h-full flex flex-col">
+<h3 class="orbitron text-2xl font-bold mb-4 text-primary glow-text">Techtalk Titans</h3>
+<p class="text-gray-300 mb-4 flex-grow">
+A platform for aspiring engineers to showcase their presentation skills and technical knowledge. Participants will deliver concise talks on emerging technologies, innovative solutions, or research findings in the field of electronics and communication.
+</p>
+<div class="mt-auto">
+<div class="flex items-center text-sm text-gray-400">
+<i class="ri-time-line mr-2"></i>
+<span>Duration: 15 minutes per presentation</span>
+</div>
+<div class="flex items-center text-sm text-gray-400 mt-2">
+<i class="ri-team-line mr-2"></i>
+<span>Team Size: Individual or Pair</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Event 2 -->
+<div class="event-card bg-black bg-opacity-50 backdrop-blur-md rounded-lg overflow-hidden border border-primary/30 h-96">
+<div class="p-6 h-full flex flex-col">
+<h3 class="orbitron text-2xl font-bold mb-4 text-primary glow-text">Prototype Parade</h3>
+<p class="text-gray-300 mb-4 flex-grow">
+An exhibition-style competition where teams present working prototypes of innovative electronic devices or systems. Projects will be judged on innovation, technical complexity, practical application, and presentation quality.
+</p>
+<div class="mt-auto">
+<div class="flex items-center text-sm text-gray-400">
+<i class="ri-tools-line mr-2"></i>
+<span>Materials: Bring your own prototype</span>
+</div>
+<div class="flex items-center text-sm text-gray-400 mt-2">
+<i class="ri-team-line mr-2"></i>
+<span>Team Size: 2-4 members</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Event 3 -->
+<div class="event-card bg-black bg-opacity-50 backdrop-blur-md rounded-lg overflow-hidden border border-primary/30 h-96">
+<div class="p-6 h-full flex flex-col">
+<h3 class="orbitron text-2xl font-bold mb-4 text-primary glow-text">Bug Slay</h3>
+<p class="text-gray-300 mb-4 flex-grow">
+A debugging challenge where participants must identify and fix errors in provided electronic circuits or code snippets. Test your troubleshooting skills under time pressure and compete to solve the most bugs accurately.
+</p>
+<div class="mt-auto">
+<div class="flex items-center text-sm text-gray-400">
+<i class="ri-time-line mr-2"></i>
+<span>Duration: 90 minutes</span>
+</div>
+<div class="flex items-center text-sm text-gray-400 mt-2">
+<i class="ri-team-line mr-2"></i>
+<span>Team Size: Individual</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Event 4 -->
+<div class="event-card bg-black bg-opacity-50 backdrop-blur-md rounded-lg overflow-hidden border border-primary/30 h-96">
+<div class="p-6 h-full flex flex-col">
+<h3 class="orbitron text-2xl font-bold mb-4 text-primary glow-text">Brain Byte Brawl</h3>
+<p class="text-gray-300 mb-4 flex-grow">
+A multi-round technical quiz competition testing knowledge in electronics, communications, programming, and current technological trends. Preliminary written round followed by an exciting on-stage final for top teams.
+</p>
+<div class="mt-auto">
+<div class="flex items-center text-sm text-gray-400">
+<i class="ri-question-line mr-2"></i>
+<span>Rounds: Prelims + Finals</span>
+</div>
+<div class="flex items-center text-sm text-gray-400 mt-2">
+<i class="ri-team-line mr-2"></i>
+<span>Team Size: 2 members</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Event 5 -->
+<div class="event-card bg-black bg-opacity-50 backdrop-blur-md rounded-lg overflow-hidden border border-primary/30 h-96">
+<div class="p-6 h-full flex flex-col">
+<h3 class="orbitron text-2xl font-bold mb-4 text-primary glow-text">DeCode-X</h3>
+<p class="text-gray-300 mb-4 flex-grow">
+A competitive coding challenge focusing on algorithm design and implementation. Participants will solve a series of increasingly difficult programming problems with constraints on time and computational efficiency.
+</p>
+<div class="mt-auto">
+<div class="flex items-center text-sm text-gray-400">
+<i class="ri-code-line mr-2"></i>
+<span>Languages: C, C++, Python, Java</span>
+</div>
+<div class="flex items-center text-sm text-gray-400 mt-2">
+<i class="ri-team-line mr-2"></i>
+<span>Team Size: Individual or Pair</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Non-Technical Events Section -->
+<section id="non-tech-events" class="min-h-screen w-full flex items-center py-20">
+<div class="container mx-auto px-6">
+<h2 class="orbitron text-4xl md:text-5xl font-bold mb-12 text-center glow-text-purple">NON-TECHNICAL EVENTS</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Event 1 -->
+<div class="event-card bg-black bg-opacity-50 backdrop-blur-md rounded-lg overflow-hidden border border-secondary/30 glow-border-purple h-96">
+<div class="p-6 h-full flex flex-col">
+<h3 class="orbitron text-2xl font-bold mb-4 text-secondary glow-text-purple">Link Storm</h3>
+<p class="text-gray-300 mb-4 flex-grow">
+A fast-paced word association game where teams must create chains of related words. Each team member must continue the chain by connecting a new word to the previous one, creating the longest possible sequence without breaks.
+</p>
+<div class="mt-auto">
+<div class="flex items-center text-sm text-gray-400">
+<i class="ri-time-line mr-2"></i>
+<span>Duration: 3 rounds of 10 minutes each</span>
+</div>
+<div class="flex items-center text-sm text-gray-400 mt-2">
+<i class="ri-team-line mr-2"></i>
+<span>Team Size: 3-4 members</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Event 2 -->
+<div class="event-card bg-black bg-opacity-50 backdrop-blur-md rounded-lg overflow-hidden border border-secondary/30 glow-border-purple h-96">
+<div class="p-6 h-full flex flex-col">
+<h3 class="orbitron text-2xl font-bold mb-4 text-secondary glow-text-purple">BeatFusion</h3>
+<p class="text-gray-300 mb-4 flex-grow">
+A music and rhythm-based competition where participants showcase their talent in beatboxing, rapping, or musical performance. Contestants can perform solo or in groups, with judging based on creativity, rhythm, and audience engagement.
+</p>
+<div class="mt-auto">
+<div class="flex items-center text-sm text-gray-400">
+<i class="ri-music-line mr-2"></i>
+<span>Performance Time: 3-5 minutes</span>
+</div>
+<div class="flex items-center text-sm text-gray-400 mt-2">
+<i class="ri-team-line mr-2"></i>
+<span>Participation: Individual or Group</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Event 3 -->
+<div class="event-card bg-black bg-opacity-50 backdrop-blur-md rounded-lg overflow-hidden border border-secondary/30 glow-border-purple h-96">
+<div class="p-6 h-full flex flex-col">
+<h3 class="orbitron text-2xl font-bold mb-4 text-secondary glow-text-purple">Click a Story</h3>
+<p class="text-gray-300 mb-4 flex-grow">
+A photography contest where participants must capture and present a series of images that tell a compelling story. Photos can be taken on campus during the event or submitted from previous work, with themes announced on the day.
+</p>
+<div class="mt-auto">
+<div class="flex items-center text-sm text-gray-400">
+<i class="ri-camera-line mr-2"></i>
+<span>Submission: 3-5 photos with caption</span>
+</div>
+<div class="flex items-center text-sm text-gray-400 mt-2">
+<i class="ri-team-line mr-2"></i>
+<span>Team Size: Individual</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Schedule/Registration Section -->
+<section id="schedule" class="min-h-screen w-full flex items-center py-20">
+<div class="container mx-auto px-6">
+<h2 class="orbitron text-4xl md:text-5xl font-bold mb-12 text-center glow-text">SCHEDULE & REGISTRATION</h2>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+<!-- Registration -->
+<div class="bg-black bg-opacity-50 backdrop-blur-md p-8 rounded-lg border border-primary/30 glow-border">
+<h3 class="orbitron text-2xl font-bold mb-6 text-primary">Registration</h3>
+<p class="mb-6">
+Secure your spot at EPULZ'25 by registering through our official registration portal. Early bird registrations receive special benefits and guaranteed participation in all events.
+</p>
+<div class="mb-6">
+<h4 class="font-bold mb-2">Registration Fee:</h4>
+<ul class="list-disc list-inside space-y-2">
+<li>₹250 per INDIVIDUAL PARTICIPANT</li>
+<li>₹350 for GROUP PARTICIPANTS</li>
+</ul>
+</div>
+<a href="https://qrco.de/bfrdqv" target="_blank" class="inline-block px-8 py-4 bg-transparent border-2 border-primary text-primary orbitron font-bold rounded-button hover:bg-primary hover:text-black transition-all duration-300 glow-border whitespace-nowrap">
+REGISTER NOW
+</a>
+</div>
+<!-- Schedule -->
+<div class="bg-black bg-opacity-50 backdrop-blur-md p-8 rounded-lg border border-primary/30 glow-border">
+<h3 class="orbitron text-2xl font-bold mb-6 text-primary">Event Schedule</h3>
+<div class="space-y-6">
+<div class="relative pl-8 border-l-2 border-primary/50">
+<div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-primary glow-border"></div>
+<h4 class="font-bold text-lg">April 30, 2025</h4>
+<ul class="mt-2 space-y-2">
+<li><span class="text-primary">08:30 AM - 09:30 AM:</span> Registration & Welcome Kit Distribution</li>
+<li><span class="text-primary">09:45 AM - 10:30 AM:</span> Inaugural Ceremony</li>
+<li><span class="text-primary">10:45 AM - 12:30 PM:</span> Techtalk Titans (Preliminary Round)</li>
+<li><span class="text-primary">12:30 PM - 01:30 PM:</span> Lunch Break</li>
+<li><span class="text-primary">01:45 PM - 03:30 PM:</span> Brain Byte Brawl (Preliminary Round)</li>
+<li><span class="text-primary">03:45 PM - 05:30 PM:</span> BeatFusion & Other Events</li>
+<li><span class="text-primary">05:30 PM - 06:00 PM:</span> Valedictory & Prize Distribution</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section id="contact" class="min-h-screen w-full flex items-center py-20">
+<div class="container mx-auto px-6">
+<h2 class="orbitron text-4xl md:text-5xl font-bold mb-12 text-center glow-text">CONTACT US</h2>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+<!-- Contact Info -->
+<div class="bg-black bg-opacity-50 backdrop-blur-md p-8 rounded-lg border border-primary/30 glow-border">
+<h3 class="orbitron text-2xl font-bold mb-6 text-primary">Get In Touch</h3>
+<div class="space-y-6">
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center text-primary mr-4">
+<i class="ri-map-pin-line ri-lg"></i>
+</div>
+<div>
+<h4 class="font-bold mb-1">Venue</h4>
+<p>ECE Seminar Hall</p>
+<p>Thanthai Periyar Government Institute of Technology-Vellore</p>
+<p>V4JC+359, Bagayam, Vellore, Tamil Nadu 632002</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center text-primary mr-4">
+<i class="ri-mail-line ri-lg"></i>
+</div>
+<div>
+<h4 class="font-bold mb-1">Email</h4>
+<p>epulz2k25@gmail.com</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center text-primary mr-4">
+<i class="ri-instagram-line ri-lg"></i>
+</div>
+<div>
+<h4 class="font-bold mb-1">Instagram</h4>
+<a href="https://www.instagram.com/epulz_2k25/" target="_blank" class="text-primary hover:underline">@epulz_2k25</a>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center text-primary mr-4">
+<i class="ri-user-line ri-lg"></i>
+</div>
+<div>
+<h4 class="font-bold mb-1">Contact Persons</h4>
+<p>R. Harish: +91 9345648844</p>
+<p>P. Nithish Kumar: +91 8072698494</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Map -->
+<div class="bg-black bg-opacity-50 backdrop-blur-md p-8 rounded-lg border border-primary/30 glow-border h-full">
+<h3 class="orbitron text-2xl font-bold mb-6 text-primary">Location</h3>
+<div class="h-80 rounded-lg overflow-hidden">
+<div style="background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png');" class="w-full h-full bg-cover bg-center"></div>
+</div>
+<div class="mt-4 text-center">
+<a href="https://maps.google.com/?q=V4JC+359, Bagayam, Vellore, Tamil Nadu 632002" target="_blank" class="inline-block px-6 py-3 bg-transparent border border-primary text-primary text-sm rounded-button hover:bg-primary hover:text-black transition-all duration-300 whitespace-nowrap">
+<i class="ri-navigation-line mr-2"></i> Get Directions
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-black py-12">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Quick Links -->
+<div>
+<h3 class="orbitron text-xl font-bold mb-4 text-primary">Quick Links</h3>
+<ul class="space-y-2">
+<li><a href="#hero" class="text-gray-300 hover:text-primary transition-colors">Home</a></li>
+<li><a href="#about" class="text-gray-300 hover:text-primary transition-colors">About</a></li>
+<li><a href="#tech-events" class="text-gray-300 hover:text-primary transition-colors">Technical Events</a></li>
+<li><a href="#non-tech-events" class="text-gray-300 hover:text-primary transition-colors">Non-Technical Events</a></li>
+<li><a href="#schedule" class="text-gray-300 hover:text-primary transition-colors">Schedule</a></li>
+<li><a href="#contact" class="text-gray-300 hover:text-primary transition-colors">Contact</a></li>
+</ul>
+</div>
+<!-- Social Media -->
+<div>
+<h3 class="orbitron text-xl font-bold mb-4 text-primary">Connect With Us</h3>
+<div class="flex space-x-4">
+<a href="https://www.instagram.com/epulz_2k25/" target="_blank" class="w-10 h-10 rounded-full border border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-black transition-all duration-300">
+<i class="ri-instagram-line"></i>
+</a>
+<a href="https://www.facebook.com/tpgitvellore/" target="_blank" class="w-10 h-10 rounded-full border border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-black transition-all duration-300">
+<i class="ri-facebook-line"></i>
+</a>
+<a href="https://twitter.com/tpgitvellore" target="_blank" class="w-10 h-10 rounded-full border border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-black transition-all duration-300">
+<i class="ri-twitter-x-line"></i>
+</a>
+<a href="https://www.linkedin.com/school/tpgit/" target="_blank" class="w-10 h-10 rounded-full border border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-black transition-all duration-300">
+<i class="ri-linkedin-line"></i>
+</a>
+</div>
+</div>
+<!-- Department Info -->
+<div>
+<h3 class="orbitron text-xl font-bold mb-4 text-primary">Organized By</h3>
+<p class="text-gray-300 mb-2">Department of Electronics and Communication Engineering</p>
+<p class="text-gray-300">Thanthai Periyar Government Institute of Technology-Vellore</p>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-gray-800 text-center">
+  <p class="text-gray-400"> 2025 EPULZ'25. All Rights Reserved.</p>
+  <p class="text-gray-500 text-sm mt-2">Designed with <i class="ri-heart-fill text-primary"></i> by ECE Department</p>
+  <div class="mt-4">
+    <p class="text-gray-400 text-sm">Local URL: <span id="localUrl" class="text-primary"></span></p>
+  </div>
+</div>
+</div>
+</footer>
+<script>
+// Countdown Timer
+const countdownDate = new Date("April 30, 2025 09:00:00").getTime();
+function updateCountdown() {
+const now = new Date().getTime();
+const distance = countdownDate - now;
+const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+document.getElementById("days").innerText = days.toString().padStart(2, '0');
+document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
+// Navigation Dots Highlight
+const sections = document.querySelectorAll('section');
+const navDots = document.querySelectorAll('.nav-dot');
+window.addEventListener('scroll', () => {
+let current = '';
+sections.forEach(section => {
+const sectionTop = section.offsetTop;
+const sectionHeight = section.clientHeight;
+if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+current = section.getAttribute('id');
+}
+});
+navDots.forEach(dot => {
+dot.classList.remove('active');
+if (dot.getAttribute('href').substring(1) === current) {
+dot.classList.add('active');
+}
+});
+});
+// Mobile Menu Toggle
+const menuButton = document.querySelector('nav button');
+const mobileMenu = document.createElement('div');
+mobileMenu.className = 'fixed inset-0 bg-black bg-opacity-95 z-40 flex items-center justify-center transform translate-x-full transition-transform duration-300 ease-in-out';
+mobileMenu.innerHTML = `
+<div class="text-center">
+<button class="absolute top-6 right-6 text-white w-10 h-10 flex items-center justify-center">
+<i class="ri-close-line ri-2x"></i>
+</button>
+<div class="space-y-6">
+<a href="#hero" class="block text-2xl text-white hover:text-primary transition-colors">Home</a>
+<a href="#about" class="block text-2xl text-white hover:text-primary transition-colors">About</a>
+<a href="#tech-events" class="block text-2xl text-white hover:text-primary transition-colors">Technical Events</a>
+<a href="#non-tech-events" class="block text-2xl text-white hover:text-primary transition-colors">Non-Technical Events</a>
+<a href="#schedule" class="block text-2xl text-white hover:text-primary transition-colors">Schedule</a>
+<a href="#contact" class="block text-2xl text-white hover:text-primary transition-colors">Contact</a>
+</div>
+</div>
+`;
+document.body.appendChild(mobileMenu);
+menuButton.addEventListener('click', () => {
+mobileMenu.classList.toggle('translate-x-full');
+});
+mobileMenu.querySelector('button').addEventListener('click', () => {
+mobileMenu.classList.add('translate-x-full');
+});
+mobileMenu.querySelectorAll('a').forEach(link => {
+link.addEventListener('click', () => {
+mobileMenu.classList.add('translate-x-full');
+});
+});
+// Show local network URL
+if(window.location.protocol === 'file:') {
+  document.getElementById('localUrl').textContent = 
+    'http://localhost:8000/EPULZ\'25-Symposium-Site.html (run python -m http.server)';
+} else {
+  document.getElementById('localUrl').textContent = window.location.href;
+}
+</script>
+</body>
+</html>
